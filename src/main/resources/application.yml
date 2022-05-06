@@ -1,7 +1,0 @@
-micronaut:
-  application:
-    name: jiraClient
-netty:
-  default:
-    allocator:
-      max-order: 3

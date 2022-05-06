@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>eu.xtrf.custom</groupId>
+  <groupId>eu.xtrf.custom.clickup</groupId>
   <artifactId>jira-client</artifactId>
-  <version>0.1</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>${packaging}</packaging>
 
   <parent>
@@ -18,15 +18,60 @@
     <jdk.version>11</jdk.version>
     <release.version>11</release.version>
     <micronaut.version>3.4.3</micronaut.version>
-    <exec.mainClass>eu.xtrf.custom.Application</exec.mainClass>
+    <exec.mainClass>eu.xtrf.custom.clickup.Application</exec.mainClass>
     <groovyVersion>3.0.9</groovyVersion>
     <micronaut.runtime>netty</micronaut.runtime>
   </properties>
 
-  <repositories>
+  <scm>
+    <connection>scm:git:git@github.com:xtrf/jira-client.git</connection>
+    <developerConnection>scm:git:git@github.com:xtrf/jira-client.git
+    </developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
+  <distributionManagement>
     <repository>
-      <id>central</id>
-      <url>https://repo.maven.apache.org/maven2</url>
+      <id>euteCert-repo</id>
+      <name>euteCERT central repository</name>
+      <url>https://nexus.dev.xtrf.eu/nexus/content/repositories/releases</url>
+      <uniqueVersion>false</uniqueVersion>
+    </repository>
+    <snapshotRepository>
+      <id>euteCert-snapshots</id>
+      <name>euteCERT development repository</name>
+      <url>https://nexus.dev.xtrf.eu/nexus/content/repositories/snapshots</url>
+      <uniqueVersion>false</uniqueVersion>
+    </snapshotRepository>
+    <site>
+      <id>euteCert</id>
+      <url>file://${user.home}/sites/${project.artifactId}/${project.version}</url>
+    </site>
+  </distributionManagement>
+  <repositories>
+
+    <repository>
+      <id>euteCert-repo</id>
+      <name>euteCert release repository</name>
+      <url>https://nexus.dev.xtrf.eu/nexus/content/groups/public</url>
+      <releases>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <updatePolicy>never</updatePolicy>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>xtrf-libs</id>
+      <name>XTRF Libs repo</name>
+      <url>https://nexus.dev.xtrf.eu/nexus/repository/xtrf-libs</url>
+      <releases>
+        <updatePolicy>always</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
     </repository>
   </repositories>
 
