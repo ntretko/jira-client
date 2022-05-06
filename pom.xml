@@ -109,11 +109,6 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>io.micronaut.openapi</groupId>
-      <artifactId>micronaut-openapi</artifactId>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
       <groupId>org.spockframework</groupId>
       <artifactId>spock-core</artifactId>
       <scope>test</scope>
@@ -209,6 +204,7 @@
         <configuration>
           <source>11</source>
           <target>11</target>
+          <release>11</release>
         </configuration>
       </plugin>
       <plugin>
